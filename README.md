@@ -11,4 +11,4 @@
 
 ### Configuration Files
   1. [Original Config Files' Paths](Arch-Linux-i3wm-bakups/cfg/origin.json)
-  2. [Destination Config Files' Paths](Arch-Linux-i3wm-bakups/cfg/destinaton.json)
+  2. [Destination Config Files' Paths](Arch-Linux-i3wm-bakups/cfg/destination.json)
