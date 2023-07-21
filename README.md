@@ -6,5 +6,9 @@
 
 ## Detailed Info [Topic Wise]
 ### Arch Linux i3wm
-  1. [Installed packages](Arch-Linux-i3wm-bakups/pkgs.json)
-  2. [config files](Arch-Linux-i3wm-bakups/cfg)
+  1. [Installed Packages](Arch-Linux-i3wm-bakups/pkgs.json)
+  2. [Config Files](Arch-Linux-i3wm-bakups/cfg)
+
+### Configuration Files
+  1. [Original Config Files' Paths](Arch-Linux-i3wm-bakups/cfg/origin.json)
+  2. [Destination Config Files' Paths](Arch-Linux-i3wm-bakups/cfg/destinaton.json)
