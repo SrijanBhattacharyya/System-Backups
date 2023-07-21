@@ -9,11 +9,11 @@
   1. [Installed Packages](Arch-Linux-i3wm-bakups/pkgs.json)
   2. [Config Files](Arch-Linux-i3wm-bakups/cfg)
 
-### Description of Configuration Files
+#### Description of Configuration Files
   1. [Original Config Files' Paths](Arch-Linux-i3wm-bakups/cfg/origin.json)
   2. [Destination Config Files' Paths](Arch-Linux-i3wm-bakups/cfg/destination.json)
 
-### Configuration Files
+#### Configuration Files
   1. [i3wm Config File](Arch-Linux-i3wm-bakups/cfg/config)
   2. [Touchpad Config File](Arch-Linux-i3wm-bakups/cfg/30-touchpad.conf)
   3. [GRUB Config File](Arch-Linux-i3wm-bakups/cfg/grub)
