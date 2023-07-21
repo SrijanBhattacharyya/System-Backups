@@ -32,5 +32,5 @@ sda
 nvme0n1
 |├─>nvme0n1p1    | vfat   |     100 MiB | EFI System                   | Windows 10 Single Language Home Edition |
 |├─>nvme0n1p2    |        |      16 MiB | Microsoft reserved           |                                         |
-|└─>nvme0n1p3    | ntfs   |  975667 GiB | Microsoft basic data         |                                         |
+|└─>nvme0n1p3    | ntfs   |  975667 MiB | Microsoft basic data         |                                         |
 ```
