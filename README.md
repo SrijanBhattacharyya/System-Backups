@@ -12,3 +12,5 @@
 ### Configuration Files
   1. [Original Config Files' Paths](Arch-Linux-i3wm-bakups/cfg/origin.json)
   2. [Destination Config Files' Paths](Arch-Linux-i3wm-bakups/cfg/destination.json)
+  3. [i3wm Config File](Arch-Linux-i3wm-bakups/cfg/config)
+  4. [Touchpad Config File](Arch-Linux-i3wm-bakups/cfg/30-touchpad.conf)
