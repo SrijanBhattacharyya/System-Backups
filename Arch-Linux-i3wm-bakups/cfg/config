@@ -234,7 +234,7 @@ for_window		[class="Google-chrome"]             move to workspace $ws2
 
 # for VSCode and associats
 for_window		[class="Code"]                      move to workspace $ws3
-for_window      [class="Tk"]                      	move to workspace $ws3
+for_window      	[class="Tk"]                      	move to workspace $ws3
 
 # for Arduino-ide
 for_window		[class="processing-app-Base"]       move to workspace $ws3
@@ -252,7 +252,7 @@ for_window		[class="Imager"]                    move to workspace $ws3
 for_window		[class="Audacity"]                  move to workspace $ws6
 
 # for OpenShot
-for_window      [class="openshot"]                  move to workspace $ws6
+for_window      	[class="openshot"]                  move to workspace $ws6
 
 # for tor browser
 for_window		[class="Tor Browser"]               move to workspace $ws10
@@ -260,17 +260,17 @@ for_window		[class="Tor Browser"]               move to workspace $ws10
 
 ## enabling floating window and title bar for certain window
 # example command
-#for_window	[class="WM_CLASS"]              floating enable,    border size,        #move_to_position
+#for_window	[class="WM_CLASS"]              floating enable,	border size,		move_to_position
 # screen dimention = 1920x1080
 
 # for Tk windows
-for_window	[class="Tk"]                    floating enable,    border normal,      move position center
+for_window	[class="Tk"]                    floating enable,	border normal,		move position center
 
 # for vlc
-for_window  [class="vlc"]                                       border normal,		-g 420x180+1080+720
+for_window  	[class="vlc"]						border normal,		-g 420x180+1080+720
 
 # for Screen Recorder
-for_window	[class="SimpleScreenRecorder"], floating enable,    border normal
+for_window	[class="SimpleScreenRecorder"], floating enable,	border normal
 
 # for scrcpy
 for_window	[class="scrcpy"]                floating enable,	border pixel 1,		move position center
@@ -282,18 +282,18 @@ for_window	[class="Imager"]                floating enable,	border normal,		move
 for_window	[class="Thunar"]                floating enable,	border pixel 1,		-g 773x474+374+131
 
 # for Audacity
-for_window	[class="Audacity"]                                  border normal
+for_window	[class="Audacity"]					border normal
 
 # for Kde Connect
-for_window	[class="kdeconnect.app"]        floating enable,    border normal,		move position center
+for_window	[class="kdeconnect.app"]        floating enable,	border normal,		move position center
 
 # for feh
-for_window	[class="feh"]                                       border normal
+for_window	[class="feh"]						border normal
 
 
 ## Hiding title bar
 # for normal window
-default_border			pixel	1
+default_border		pixel	1
 
 # for floating window
 default_floating_border	pixel	1
