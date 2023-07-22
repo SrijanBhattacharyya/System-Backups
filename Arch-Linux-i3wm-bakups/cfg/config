@@ -421,53 +421,53 @@ bar {
 #bindsym	key-combination	exec	command
 
 # start dmenu (a program launcher)
-bindsym     $mod+d         exec    --no-startup-id dmenu_run
+bindsym $mod+d		exec    --no-startup-id dmenu_run
 
 # start rofi (an app launcher)
-bindsym		$mod+Shift+d    exec	/usr/bin/rofi -show drun
+bindsym	$mod+Shift+d    exec	/usr/bin/rofi -show drun
 
 # start chrome
-bindsym		$mod+b          exec	$browser
+bindsym	$mod+b          exec	$browser
 
 # start a terminal
-bindsym		$mod+t          exec	$terminal
+bindsym	$mod+t          exec	$terminal
 
 # start VSCode
-bindsym		$mod+c          exec	/usr/bin/code
+bindsym	$mod+c          exec	/usr/bin/code
 
 # start Blender
-bindsym		$mod+Shift+b    exec	/usr/bin/blender
+bindsym	$mod+Shift+b    exec	/usr/bin/blender
 
 # start audacity
-bindsym     $mod+a          exec    /usr/bin/audacity
+bindsym	$mod+a          exec    /usr/bin/audacity
 
 # start scrcpy
-bindsym		$mod+Shift+a    exec	/usr/bin/scrcpy
+bindsym	$mod+Shift+a    exec	/usr/bin/scrcpy
 
 # start raspi-imager
-bindsym		$mod+i          exec	/usr/bin/rpi-imager
+bindsym	$mod+i          exec	/usr/bin/rpi-imager
 
 # start thunar
-bindsym		$mod+Shift+t    exec	$fm
+bindsym	$mod+Shift+t    exec	$fm
 
 # start screen recorder
-#bindsym     $mod+Alt+r      exec    ~/ssr.sh
+#bindsym	$mod+Alt+r      exec    ~/ssr.sh
 
 # player
 # play-pause
-bindsym		Mod2+XF86AudioPlay	exec	playerctl -p chromium play-pause
+bindsym	Mod2+XF86AudioPlay	exec	playerctl -p chromium play-pause
 
 # play next
-bindsym		Mod2+XF86AudioNext	exec	playerctl -p chromium next
+bindsym	Mod2+XF86AudioNext	exec	playerctl -p chromium next
 
 # play previous
-bindsym     Mod2+XF86AudioPrev	exec	playerctl -p chromium previous
+bindsym Mod2+XF86AudioPrev	exec	playerctl -p chromium previous
 
 # screenshot
-bindsym     $mod+Print          exec flameshot gui
+bindsym $mod+Print          exec flameshot gui
 
 # screen recorder
-#bindsym    $mod+Shift+Print    exec simplescreenrecorder
+#bindsym	$mod+Shift+Print    exec simplescreenrecorder
 
 
 ## execute at the start
