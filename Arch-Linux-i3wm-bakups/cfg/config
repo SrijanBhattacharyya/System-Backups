@@ -11,7 +11,7 @@
 
 ## setting some variables
 # default mod key
-set $mod Mod4
+set $super Mod4
 
 # default wallpaper
 set $wppr /home/rohit/wallpapers/wp-0.png
@@ -81,28 +81,28 @@ bindsym		XF86AudioMute           exec    --no-startup-id	pactl   set-sink-mute  
 bindsym		XF86AudioMicMute        exec    --no-startup-id	pactl   set-source-mute $mic		toggle      &&  $refresh_i3status
 
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
+# Use Mouse+$super to drag floating windows to their wanted position
+floating_modifier $super
 
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
 #tiling_drag modifier titlebar
 
 # kill focused window
-bindsym 	$mod+x 		kill
+bindsym 	$super+x 		kill
 
-# A more modern dmenu replacement is rofi: bindcode $mod+40 exec "rofi -modi drun,run -show drun"
+# A more modern dmenu replacement is rofi: bindcode $super+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a .desktop file. It is
-# a wrapper around dmenu, so you need that installed. bindcode $mod+40 exec --no-startup-id
+# a wrapper around dmenu, so you need that installed. bindcode $super+40 exec --no-startup-id
 # i3-dmenu-desktop
 
 
 ## change focus
 # with keyboard
-bindsym 	$mod+Left 	focus left
-bindsym 	$mod+Right 	focus right
-bindsym 	$mod+Up 	focus up
-bindsym 	$mod+Down 	focus down
+bindsym 	$super+Left 	focus left
+bindsym 	$super+Right 	focus right
+bindsym 	$super+Up 	focus up
+bindsym 	$super+Down 	focus down
 
 # with mouse
 focus_follows_mouse yes
@@ -111,41 +111,41 @@ focus_follows_mouse yes
 bindsym 	Alt+Tab 	focus toggle
 
 ## move focused window
-bindsym 	$mod+Ctrl+Left 	move left
-bindsym 	$mod+Ctrl+Right move right
-bindsym 	$mod+Ctrl+Up 	move up
-bindsym 	$mod+Ctrl+Down 	move down
+bindsym 	$super+Ctrl+Left 	move left
+bindsym 	$super+Ctrl+Right move right
+bindsym 	$super+Ctrl+Up 	move up
+bindsym 	$super+Ctrl+Down 	move down
 
 
 ## split desktop
 # split in horizontal orientation
-bindsym 	$mod+h 		split v
+bindsym 	$super+h 		split v
 
 # split in vertical orientation
-bindsym 	$mod+v 		split h
+bindsym 	$super+v 		split h
 
 # change container layout (stacked, tabbed, toggle split)
-#bindsym 	$mod+s 	layout stacking
-#bindsym 	$mod+w 	layout tabbed
-#bindsym 	$mod+e 	layout toggle split
+#bindsym 	$super+s 	layout stacking
+#bindsym 	$super+w 	layout tabbed
+#bindsym 	$super+e 	layout toggle split
 
 # toggle tiling / floating
-#bindsym $mod+Shift+space focus_toggle
+#bindsym $super+Shift+space focus_toggle
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $super+f fullscreen toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space floating toggle
+bindsym $super+space floating toggle
 
 # change focus with Alt+Tab
 #bindsym Alt+Tab focus change
 
 # focus the parent container
-#bindsym $mod+a focus parent
+#bindsym $super+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+#bindsym $super+d focus child
 
 
 ## enableing some services
@@ -158,7 +158,7 @@ bindsym $mod+space floating toggle
 
 ## adding some functionals
 # lock screen
-bindsym $mod+l exec i3lock --image $wppr -e
+bindsym $super+l exec i3lock --image $wppr -e
 
 # setting the default volume
 exec_always pamixer --set-volume $vol
@@ -183,32 +183,32 @@ set $ws10	"10: 🧅"
 
 ## switch to workspace
 # by keyboard num keys
-bindsym $mod+1			workspace number $ws1
-bindsym $mod+2			workspace number $ws2
-bindsym $mod+3			workspace number $ws3
-bindsym $mod+4			workspace number $ws4
-bindsym $mod+5			workspace number $ws5
-bindsym $mod+6			workspace number $ws6
-bindsym $mod+7			workspace number $ws7
-bindsym $mod+8			workspace number $ws8
-bindsym $mod+9			workspace number $ws9
-bindsym $mod+0			workspace number $ws10
+bindsym $super+1			workspace number $ws1
+bindsym $super+2			workspace number $ws2
+bindsym $super+3			workspace number $ws3
+bindsym $super+4			workspace number $ws4
+bindsym $super+5			workspace number $ws5
+bindsym $super+6			workspace number $ws6
+bindsym $super+7			workspace number $ws7
+bindsym $super+8			workspace number $ws8
+bindsym $super+9			workspace number $ws9
+bindsym $super+0			workspace number $ws10
 
 # switch workspace back and forth
-bindsym $mod+Tab		workspace back_and_forth
+bindsym $super+Tab		workspace back_and_forth
 
 
 ## move focused container to workspace
-bindsym $mod+Ctrl+1 move container to workspace number $ws1
-bindsym $mod+Ctrl+2 move container to workspace number $ws2
-bindsym $mod+Ctrl+3 move container to workspace number $ws3
-bindsym $mod+Ctrl+4 move container to workspace number $ws4
-bindsym $mod+Ctrl+5 move container to workspace number $ws5
-bindsym $mod+Ctrl+6 move container to workspace number $ws6
-bindsym $mod+Ctrl+7 move container to workspace number $ws7
-bindsym $mod+Ctrl+8 move container to workspace number $ws8
-bindsym $mod+Ctrl+9 move container to workspace number $ws9
-bindsym $mod+Ctrl+0 move container to workspace number $ws10
+bindsym $super+Ctrl+1 move container to workspace number $ws1
+bindsym $super+Ctrl+2 move container to workspace number $ws2
+bindsym $super+Ctrl+3 move container to workspace number $ws3
+bindsym $super+Ctrl+4 move container to workspace number $ws4
+bindsym $super+Ctrl+5 move container to workspace number $ws5
+bindsym $super+Ctrl+6 move container to workspace number $ws6
+bindsym $super+Ctrl+7 move container to workspace number $ws7
+bindsym $super+Ctrl+8 move container to workspace number $ws8
+bindsym $super+Ctrl+9 move container to workspace number $ws9
+bindsym $super+Ctrl+0 move container to workspace number $ws10
 
 
 ## Brightness Settings
@@ -305,15 +305,15 @@ title_align center
 
 ## i3 funcs
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $super+Shift+c reload
 
 
 ## i3
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $super+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $super+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 
 ## resize window
@@ -327,13 +327,13 @@ mode "resize" {
         bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
+        # back to normal: Enter or Escape or $super+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+        bindsym $super+r mode "default"
 }
 
-bindsym $mod+r mode "resize"
+bindsym $super+r mode "resize"
 
 
 ## setting up colors
@@ -421,37 +421,37 @@ bar {
 #bindsym	key-combination	exec	command
 
 # start dmenu (a program launcher)
-bindsym $mod+d		exec    --no-startup-id dmenu_run
+bindsym $super+d		exec    --no-startup-id dmenu_run
 
 # start rofi (an app launcher)
-bindsym	$mod+Shift+d    exec	/usr/bin/rofi -show drun
+bindsym	$super+Shift+d    exec	/usr/bin/rofi -show drun
 
 # start chrome
-bindsym	$mod+b          exec	$browser
+bindsym	$super+b          exec	$browser
 
 # start a terminal
-bindsym	$mod+t          exec	$terminal
+bindsym	$super+t          exec	$terminal
 
 # start VSCode
-bindsym	$mod+c          exec	/usr/bin/code
+bindsym	$super+c          exec	/usr/bin/code
 
 # start Blender
-bindsym	$mod+Shift+b    exec	/usr/bin/blender
+bindsym	$super+Shift+b    exec	/usr/bin/blender
 
 # start audacity
-bindsym	$mod+a          exec    /usr/bin/audacity
+bindsym	$super+a          exec    /usr/bin/audacity
 
 # start scrcpy
-bindsym	$mod+Shift+a    exec	/usr/bin/scrcpy
+bindsym	$super+Shift+a    exec	/usr/bin/scrcpy
 
 # start raspi-imager
-bindsym	$mod+i          exec	/usr/bin/rpi-imager
+bindsym	$super+i          exec	/usr/bin/rpi-imager
 
 # start thunar
-bindsym	$mod+Shift+t    exec	$fm
+bindsym	$super+Shift+t    exec	$fm
 
 # start screen recorder
-#bindsym	$mod+Alt+r      exec    ~/ssr.sh
+#bindsym	$super+Alt+r      exec    ~/ssr.sh
 
 # player
 # play-pause
@@ -464,10 +464,10 @@ bindsym	Mod2+XF86AudioNext	exec	playerctl -p chromium next
 bindsym Mod2+XF86AudioPrev	exec	playerctl -p chromium previous
 
 # screenshot
-bindsym $mod+Print          exec flameshot gui
+bindsym $super+Print          exec flameshot gui
 
 # screen recorder
-#bindsym	$mod+Shift+Print    exec simplescreenrecorder
+#bindsym	$super+Shift+Print    exec simplescreenrecorder
 
 
 ## execute at the start
