@@ -8,6 +8,7 @@ set $alt Mod1
 ################################
 ### Commonly Used Variables: ###
 ################################
+
 # - Below defined are some of the very common variables that users like to customise
 # - For Keybindings search: Commonly Used Keybindings in this document
 # - Make sure that you give the absolute path to the binary / program / executable
@@ -104,6 +105,7 @@ bindsym $super+l exec i3lock -i $lockScreenWallpaper -e
 #########################
 ### Display Settings: ###
 #########################
+
 # Brightness Settings
 # setting up default display brightness at 50%
 exec_always xbacklight -set $DefaultBrightness
@@ -147,6 +149,7 @@ bindsym XF86AudioStop exec playerctl stop
 #######################################
 ### Containner and Tiling Settings: ###
 #######################################
+
 # kill focused window
 bindsym $super+x kill
 
@@ -197,6 +200,7 @@ bindsym $super+a focus parent
 ###########################################
 ### Workspaces and Workspaces Settings: ###
 ###########################################
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1: "
@@ -263,6 +267,7 @@ bindsym $super+Shift+r restart
 ###################################
 ### WS Alocations For Programs: ###
 ###################################
+
 # for terminal
 for_window [class="kitty"]			move to workspace $ws1
 
@@ -318,6 +323,7 @@ bindsym $super+r mode "resize"
 ####################
 ### Status Bars: ###
 ####################
+
 # panel
 # Start i3bar to display a workspace bar
 
