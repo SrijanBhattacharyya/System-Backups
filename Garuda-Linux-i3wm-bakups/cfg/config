@@ -18,8 +18,8 @@ set $gap 10
 
 ### Wallpaper: ###
 # - You need to specify homescreen wallpaper using azote
-set $lockScreenWallpaper 	/usr/share/wallpapers/garuda-wallpapers/Garuda-Desert.png
-#set $Wallpaper 			
+set $lockScreenWallpaper 	'/usr/share/wallpapers/garuda-wallpapers/Garuda Desert.png'
+#set $Wallpaper 		'/usr/share/wallpapers/garuda-wallpapers/Raptor SGS.png'
 
 ### System Defaults: ###
 # Brighrness
@@ -62,6 +62,7 @@ floating_modifier $super
 ###########################
 ### Autostart Programs: ###
 ###########################
+
 exec --no-startup-id ~/.fehbg
 exec --no-startup-id xsettingsd &
 #exec --no-startup-id pasystray
@@ -97,7 +98,7 @@ bindsym $super+d exec rofi -show drun
 bindsym $super+i exec sudo -E calamares
 
 # Lock screen
-bindsym $super+l exec i3lock -i $lockScreenWallpaper
+bindsym $super+l exec i3lock -i $lockScreenWallpaper -e
 
 
 #########################
@@ -115,13 +116,16 @@ bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness 
 ########################################
 ### MultiMedia Settings and Control: ###
 ########################################
+# setting the default volume at 90%
+exec_always pamixer --set-volume $DefaultVolume
+
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 
-bindsym XF86AudioRaiseVolume 	exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
-bindsym XF86AudioLowerVolume 	exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
-bindsym XF86AudioMute 		exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute 	exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioRaiseVolume 	exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@   +$VolumeChange% && $refresh_i3status
+bindsym XF86AudioLowerVolume 	exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@   -$VolumeChange% && $refresh_i3status
+bindsym XF86AudioMute 		exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@   toggle 	   && $refresh_i3status
+bindsym XF86AudioMicMute 	exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle 	   && $refresh_i3status
 
 #change volume
 #bindsym XF86AudioRaiseVolume exec pulseaudio-ctl up
@@ -294,6 +298,7 @@ for_window [class="Tor Browser"]		move to workspace $ws9
 #################
 ### Resizing: ###
 #################
+
 # resize window (you can also use the mouse for that)
 mode "resize" {
         bindsym Left resize shrink width 5 px or 5 ppt
@@ -313,31 +318,70 @@ bindsym $super+r mode "resize"
 ####################
 ### Status Bars: ###
 ####################
+# panel
 # Start i3bar to display a workspace bar
 
+# col veriables for status bars
+set $defaultWorkspaceBorderColor 		#00ff00
+set $activeWorkspaceBorderColor 		#333333
+set $inactiveWorkspaceBorderColor 		#ffffff
+set $urdentWorkspaceBorderColor 		#ff0000
+set $BM_WS_Bdr_Col 				#2F343A
+set $defaultWorkspaceBackgroundColor 		#282828e6
+set $activeWorkspaceBackgroundColor 		#222222
+set $inactiveWorkspaceBackgroundColor 		#282828e6
+set $urgentWorkspaceBackgroundColor 		#282828e6
+set $BM_WS_BG_Col 				#900000
+set $defaultTextColor 				#ffffff
+set $defaultStatusBarSeperatorColor 		#ff00ff
+set $defaultTopStatusBarBackgroundColor 	#2f343f
+set $defaultBottomStatusBarBackgroundColor 	#2f343f
+set $defaultTopStatusBarStatuslineColor 	#ffffff
+set $defaultBottomStatusBarStatuslineColor 	#ffffff
+
+# SHOWS ONLY SYSTEM INFO
 bar {
-	status_command exec /usr/bin/net-speed.sh
+	id bar-1
+	position top
+	status_command i3status -c ~/.config/i3status/config
+	#status_command exec /usr/bin/net-speed.sh
+	tray_output none
+	workspace_buttons no
+	
+	colors {
+		background $defaultTopStatusBarBackgroundColor
+		statusline $defaultTopStatusBarStatuslineColor
+		separator  $defaultStatusBarSeperatorColor
+	}
+}
+
+# SHOWS ONLY WORKSPACES
+bar {
+	id bar-2
+	position bottom
+	status_command i3status -c ~/.config/i3workspaces/config
+	#status_command exec /usr/bin/net-speed.sh
 	#strip_workspace_numbers yes|no
 	#strip_workspace_name yes|no
 	colors {
-    background #2f343f
-    statusline #FFFFFF
-    separator  #666666
+		background $defaultBottomStatusBarBackgroundColor
+		statusline $defaultBottomStatusBarStatuslineColor
+		separator  $defaultStatusBarSeperatorColor
 
-    focused_workspace  #4C7899 #285577 #FFFFFF
-    active_workspace   #333333 #222222 #FFFFFF
-    inactive_workspace #333333 #222222 #888888
-    urgent_workspace   #2F343A #900000 #FFFFFF
-    #binding_mode      #2F343A #900000 #FFFFFF
-    # colour of border, background, and text
-    }
-
+		# color of		border				background		text
+		focused_workspace	$defaultWorkspaceBorderColor	$defaultWorkspaceBackgroundColor	$defaultTextColor
+		active_workspace	$activeWorkspaceBorderColor	$activeWorkspaceBackgroundColor		$defaultTextColor
+		inactive_workspace	$inactiveWorkspaceBorderColor	$inactiveWorkspaceBackgroundColor	$defaultTextColor
+		urgent_workspace	$urdentWorkspaceBorderColor	$urgentWorkspaceBackgroundColor		$defaultTextColor
+		#binding_mode		$BM_WS_Bdr_Col			$BM_WS_BG_Col		$defaultTextColor
+	}
 }
 
 
 #################################
 ### Floating Window Settings: ###
 #################################
+
 # Open specific applications in floating mode
 for_window [title="alsamixer"] 				floating enable border pixel 1
 for_window [class="calamares"] 				floating enable border normal
@@ -369,6 +413,7 @@ for_window [class="(?i)virtualbox"] 			floating enable border normal
 for_window [class="Xfburn"] 				floating enable
 for_window [class="keepassxc"] 				floating enable
 for_window [class="garuda-welcome"] 			floating enable
+for_window [class="thunar"]				floating enable -g 497x225+926+630
 
 # window rules, you can find the window class using xprop
 for_window [class=".*"] border pixel $preferredBorderThickness
@@ -389,6 +434,7 @@ client.background           #2f343f
 #############################
 ### settings for i3-gaps: ###
 #############################
+
 # Set inner/outer gaps
 gaps inner $gap
 #gaps outer -2
@@ -446,6 +492,7 @@ mode "$mode_gaps_outer" {
 ####################################################
 ### Set shut down, restart and locking features: ###
 ####################################################
+
 bindsym $super+0 mode "$mode_system"
 
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
@@ -467,6 +514,7 @@ mode "$mode_system" {
 ###########################################
 ### Commonly Used Application Keybinds: ###
 ###########################################
+
 # Browser
 bindsym $super+b                exec $preferredBrowser;focus
 
