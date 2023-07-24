@@ -32,4 +32,4 @@
 #### Configuration Files
   1. [i3wm Config File](Garuda-Linux-i3wm-bakups/cfg/i3wm/config)
   2. [i3wm Status Bar Config File](Garuda-Linux-i3wm-bakups/cfg/i3status/config)
-  3. [i3wm WS Info Config File](Garuda-Linux-i3wm-bakups/cfg/i3wm/config)
+  3. [i3wm WS Info Config File](Garuda-Linux-i3wm-bakups/cfg/i3ws/config)
