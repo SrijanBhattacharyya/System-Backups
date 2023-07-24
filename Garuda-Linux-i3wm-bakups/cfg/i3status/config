@@ -1,0 +1,157 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+#        color_good = "#00e6ac"
+#		 color_bad = "#ff0000"
+#        color_degraded = "#ffff66"
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+#	output_format	= "%center"
+	output_format	= "i3bar"
+	colors		= true
+	color_good	= "#00ff00"
+	color_degraded	= "#ffff00"
+	color_bad	= "#ff0000"
+	interval	= 1
+	"markup"	= "pango"
+	separator	= "|"
+}
+
+order += "disk /"
+order += "wireless _first_"
+order += "wireless ip"
+#order += "ethernet _first_"
+#order += "ipv6"
+#order += "battery all"
+#order += "battery integrated"
+order += "battery status"
+order += "battery t_remaining"
+order += "battery charge"
+#order += "load"
+#order += "cpu_temperature all"
+order += "cpu_temperature 0"
+order += "cpu_temperature 1"
+order += "cpu_temperature 2"
+#order += "cpu_temperature 3"
+#order += "cpu_temperature 4"
+order += "volume master"
+#order += "tztime local"
+order += "tztime time"
+order += "tztime date"
+
+ipv6 {
+	format_up = "IP: %ip"
+	format_down = "<span color='#ff0000'>IP: </span>"
+}
+
+wireless _first_ {
+#	format_up = "W: (%quality at %essid) %ip"
+#	format_down = "W: down"
+#	format_up = "<span color='#00ff00'>[  ]: On: %essid (%quality)|IP: %ip</span>"
+#	format_up = "[  ]: On: %essid (%quality)|IP: %ip"
+	format_up = "[  ]: On: %essid (%quality)"
+	format_down = "<span color='#ff0000'>[ ! ]  Wifi: Not Connected</span>"
+}
+
+wireless ip {
+	format_up = "IP: %ip"
+	format_down = "<span color='#ff0000'>IP: </span>"
+}
+
+ethernet _first_ {
+#	if you use %speed, i3status requires root privileges
+	format_up = "<span color='#FFFFFF'>%ip | %speed </span>"
+	format_down = " no lan "
+}
+
+battery integrated {
+#	format = "%status | C = %percentage | T = %remaining"
+#	format = "<span color='#FEFF72'> %status | C: %percentage | T: %remaining</span>"   // %remaining %emptytime"
+	format = "%status | C: %percentage | T: %remaining"
+	format_down = "No battery"
+#	'#fa4c7e'
+	status_chr = "<span color='#00e64d'>[  ]  </span> "
+	status_bat = "<span color='#8080ff' >[   ] </span>"
+#	status_unk = "[? ukwn ] "
+#	status_full = "<span color='#66FF99'> [  ] </span>"
+#	path = "/sys/class/power_supply/BAT%d/uevent"
+#	low_threshold = 10
+#       last_full_capacity = true
+#	hide_seconds = true
+#	integer_battery_capacity = true
+}
+
+battery status {
+	format = "[  ] %status"
+}
+
+battery t_remaining {
+	format = "T-Left: %remaining"
+	#format = "[    ] T: %remaining"
+	format_down = "[  ] "
+}
+
+battery charge {
+	format = "C: %percentage"
+}
+
+tztime local {
+	format = "◔ %H:%M:%S | %a. %d.%m.%Y "
+	locale = "de_DE.UTF-8"
+}
+
+tztime time {
+	format = "◔ %I:%M:%S %p"
+	locale = "de_DE.UTF-8"
+}
+
+tztime date {
+	format = " %a. %d.%m.%Y "
+	locale = "de_DE.UTF-8"
+}
+
+load {
+	format = "%1min"
+}
+
+cpu_temperature all {
+#	format = "🖥️|T1: %cpu_temperature 1|T2: %cpu_temperature 2|T3: %cpu_temperature 3|T4: %cpu_temperature 4"
+}
+
+cpu_temperature 0 {
+        format = "Temp 0: %degrees °C"
+        path = "/sys/devices/platform/coretemp.0/hwmon/hwmon*/temp1_input"
+}
+cpu_temperature 1 {
+        format = "Temp 1: %degrees °C"
+        path = "/sys/devices/platform/coretemp.0/hwmon/hwmon*/temp2_input"
+}
+cpu_temperature 2 {
+        format = "Temp 2: %degrees °C"
+        path = "/sys/devices/platform/coretemp.0/hwmon/hwmon*/temp3_input"
+}
+cpu_temperature 3 {
+        format = "Temp 3: %degrees °C"
+	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon*/temp4_input"
+}
+cpu_temperature 4 {
+        format = "Temp 4: %degrees °C"
+	path = "/sys/devices/platform/coretemp.0/hwmon/hwmon*/temp5_input"
+}
+
+
+disk "/" {
+        # format = " hdd %avail "
+        format = " ⛁ %avail "
+}
+
+volume master {
+    format = "<span color='#FFFFFF'>[VOL]: %volume </span>"
+        format_muted = "<span color='#cfafc8'>[  ]: muted (%volume) </span>"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
