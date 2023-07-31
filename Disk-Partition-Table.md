@@ -5,7 +5,7 @@
 Present Disk Partition Table
 ============================
 ```
-|NAME            | FSTYPE |       SIZE | TYPE                         | OS NAME                                 |
+| NAME           | FSTYPE |       SIZE | TYPE                         | OS NAME                                 |
 |----------------|--------|------------|------------------------------|-----------------------------------------|
 sda
 |├─sda1          | vfat   |    512 MiB | EFI System                   | Arch Linux i3wm                         |
@@ -20,7 +20,7 @@ nvme0n1
 New Disk Partition Table
 ========================
 ```
-|NAME            | FSTYPE |        SIZE | TYPE                         | OS NAME                                 |
+| NAME           | FSTYPE |        SIZE | TYPE                         | OS NAME                                 |
 |----------------|--------|-------------|------------------------------|-----------------------------------------|
 sda
 |├─sda1          | vfat   |     512 MiB | EFI System                   | Arch Linux i3wm                         |
