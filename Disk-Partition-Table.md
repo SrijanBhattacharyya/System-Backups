@@ -25,10 +25,10 @@ New Disk Partition Table
 sda
 | ├─sda1         | vfat   |     512 MiB | EFI System                   | Arch Linux i3wm                         |
 | ├─sda2         | swap   |    9011 MiB | Linux swap                   |                                         |
-| ├─sda3         | btrfs  | 4137421 MiB | Linux filesystem             |                                         |
+| ├─sda3         | btrfs  |  467302 MiB | Linux filesystem             |                                         |
 | ├─sda4         | vfat   |     512 MiB | EFI System                   | Garuda Linux i3wm                       |
 | ├─sda5         | swap   |    9011 MiB | Linux swap                   |                                         |
-| └─sda6         | btrfs  | 4137421 MiB | Linux filesystem             |                                         |
+| └─sda6         | btrfs  |  467302 MiB | Linux filesystem             |                                         |
 nvme0n1
 | ├─>nvme0n1p1   | vfat   |     100 MiB | EFI System                   | Windows 10 Single Language Home Edition |
 | ├─>nvme0n1p2   |        |      16 MiB | Microsoft reserved           |                                         |
