@@ -16,6 +16,7 @@
 
 #### Configuration Files
   1. [i3wm Config File](Arch-Linux-i3wm-bakups/cfg/config)
+                        Arch-Linux-i3wm-bakups/config/i3/config
   2. [Touchpad Config File](Arch-Linux-i3wm-bakups/cfg/30-touchpad.conf)
   3. [GRUB Config File](Arch-Linux-i3wm-bakups/cfg/grub)
   4. [nano Config File](Arch-Linux-i3wm-bakups/cfg/nanorc)
