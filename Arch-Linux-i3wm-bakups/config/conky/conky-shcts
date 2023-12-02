@@ -30,9 +30,9 @@ conky.config = {
 	gap_x = 50,
   --von oben |
 	gap_y = 50,
-  minimum_width = 350,
+  minimum_width = 400,
   minimum_height = 700,
-  maximum_width = 400,
+  maximum_width = 420,
   border_inner_margin = 0,
   border_outer_margin = 20,
   --xinerama_head = 0,
@@ -50,9 +50,9 @@ conky.config = {
   font5 = 'monospace:size=11',
 
   -- Defining colors
-  color1 = '#FFFFFF',
-  color2 = '#FFFFFF',
-  color3 = '#808080',
+  color1 = '#ffffff',
+  color2 = '#ffffff',
+  color3 = '#aaaaaa',
   color4 = '#ffffff',
   color5 = '#ffffff',
 
@@ -67,7 +67,7 @@ ${image /usr/share/icons/i3wm-logo.png -p 10,0 -s 100x100  -f 5}${font2}${alignr
 
 ${alignr}${font1}${color1}${time %a %d-%m-%Y}
  ${alignr}${color3}
-${font5}${color5}${goto 12}+-------------------------------------------${alignr}${font5}${color5}+
+${font5}${color5}${goto 12}+${alignc}---------------------------------------------${alignr}${font5}${color5}+
 ${font5}${color5}${goto 12}${color1}+--- ${font2}${color2}Keybindings ${alignr}${font5}${color5}|
 ${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}open terminal [Alacritty] - ${alignr}${font4}${color4}super+t ${alignr}${font5}${color5}|
 ${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}open browser [chrome] - ${alignr}${font4}${color4}super+b ${alignr}${font5}${color5}|
@@ -108,6 +108,6 @@ ${font5}${color5}${goto 12}${color1}+--- ${font2}${color2}i3wm Functions ${align
 ${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}restart i3 - ${alignr}${font4}${color4}super+shift+r ${alignr}${font5}${color5}|
 ${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}quit i3 - ${alignr}${font4}${color4}super+q ${alignr}${font5}${color5}|
 ${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}reload config file - ${alignr}${font4}${color4}super+shift+c ${alignr}${font5}${color5}|
-${font5}${color5}${goto 12}+-------------------------------------------${alignr}${font5}${color5}+
+${font5}${color5}${goto 12}+${alignc}---------------------------------------------${alignr}${font5}${color5}+
 
 ]];
