@@ -31,7 +31,7 @@ conky.config = {
   --von oben |
 	gap_y = 50,
   minimum_width = 350,
-  minimum_height = 450,
+  minimum_height = 700,
   maximum_width = 400,
   border_inner_margin = 0,
   border_outer_margin = 20,
@@ -39,59 +39,75 @@ conky.config = {
 
   override_utf8_locale = true,
   use_xft = true,
-  font = 'monospace:size=8',
   xftalpha = 0.8,
   uppercase = false,
 
+  -- Defining fonts
+  font1 = 'monospace:size=20',
+  font2 = 'monospace:size=12',
+  font3 = 'monospace:bold:size=9',
+  font4 = 'monospace:bold:size=9',
+  font5 = 'monospace:size=11',
+
   -- Defining colors
-  default_color = '#FFFFFF',
-  -- Shades of Gray
-  color1 = '#DDDDDD',
-  color2 = '#AAAAAA',
-  color3 = '#FFFFFF',
-  -- Orange EF5A29 green 159a7f
-  color4 = '#808080',
-  -- Green Pihole
-  color5 = '#EF5A29',
-  --color0
-  color6='#b2c8d8',
-  -- color1
-  color7='#b2c8d8',
-  color8 = '#697987', -- DeepSkyBlue 00BFFF grau=323232
-  color9 = '#2d3b41', -- CadetBlue 5F9EA0, light grey
+  color1 = '#FFFFFF',
+  color2 = '#FFFFFF',
+  color3 = '#808080',
+  color4 = '#ffffff',
+  color5 = '#ffffff',
+
 }
 
+
 conky.text = [[
-${font Play:size=10:style=normal}
+# focused_workspace background #16a085 to #5D7B86
+#                     border  backgr. text
+# focused_workspace  #F9FAF9 #16a085 #292F34
+${image /usr/share/icons/i3wm-logo.png -p 10,0 -s 100x100  -f 5}${font2}${alignr}${color6}${alignc}
 
-Keybindings
-${color2}open terminal [Alacritty] - ${alignr}${color}super+t
-${color2}open browser [chrome] - ${alignr}${color}super+b
-${color2}open VS Code - ${alignr}${color}super+c
-${color2}open filemanager [thunar] - ${alignr}${color}super+Shift+t
-${color2}open scrcpy - ${alignr}${color}super+a
-${color2}open blender - ${alignr}${color}super+Shift+b
-${color2}open rpi-imager - ${alignr}${color}super+i
+${alignr}${font1}${color1}${time %a %d-%m-%Y}
+ ${alignr}${color3}
+${font5}${color5}${goto 12}+-------------------------------------------${alignr}${font5}${color5}+
+${font5}${color5}${goto 12}${color1}+--- ${font2}${color2}Keybindings ${alignr}${font5}${color5}|
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}open terminal [Alacritty] - ${alignr}${font4}${color4}super+t ${alignr}${font5}${color5}|
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}open browser [chrome] - ${alignr}${font4}${color4}super+b ${alignr}${font5}${color5}|
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}open text editor [VS Code] - ${alignr}${font4}${color4}super+c ${alignr}${font5}${color5}|
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}open filemanager [thunar] - ${alignr}${font4}${color4}super+Shift+t ${alignr}${font5}${color5}|
+# Space
+${font5}${color5}${goto 12}|${goto 44}| ${alignr}${font5}${color5}|
+# Space
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}open scrcpy - ${alignr}${font4}${color4}super+a ${alignr}${font5}${color5}|
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}open blender - ${alignr}${font4}${color4}super+Shift+b ${alignr}${font5}${color5}|
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}open rpi-imager - ${alignr}${font4}${color4}super+i ${alignr}${font5}${color5}|
+# Space
+${font5}${color5}${goto 12}|${goto 44}| ${alignr}${font5}${color5}|
+# Space
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}application launcher [rofi] - ${alignr}${font4}${color4}super+d ${alignr}${font5}${color5}|
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}screenshot - ${alignr}${font4}${color4}print ${alignr}${font5}${color5}|
+# Space
+${font5}${color5}${goto 12}| ${alignr}${font5}${color5}|
+# Space
+${goto 12}${color1}+--- ${font2}${color2}Workspaces & Container ${alignr}${font5}${color5}|
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}resize window - ${alignr}${font4}${color4}super+r ${alignr}${font5}${color5}|
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}kill focused - ${alignr}${font4}${color4}super+x ${alignr}${font5}${color5}|
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}toggle split direction - ${alignr}${font4}${color4}super+shift+q ${alignr}${font5}${color5}|
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}toggle floating - ${alignr}${font4}${color4}super+space ${alignr}${font5}${color5}|
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}toggle fullscreen - ${alignr}${font4}${color4}super+f ${alignr}${font5}${color5}|
+# Space
+${font5}${color5}${goto 12}|${goto 44}| ${alignr}${font5}${color5}|
+# Space
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}toggle WSs - ${alignr}${font4}${color4}super+tab ${alignr}${font5}${color5}|
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}switch to WS 1-9 - ${alignr}${font4}${color4}super+1-9 ${alignr}${font5}${color5}|
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}send container to WS 1-9 - ${alignr}${font4}${color4}super+ctrl+1-9 ${alignr}${font5}${color5}|
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}move container sidewise - ${alignr}${font4}${color4}super+ctrl+arrowkeys ${alignr}${font5}${color5}|
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}change focus - ${alignr}${font4}${color4}super+arrowkeys ${alignr}${font5}${color5}|
+# Space
+${font5}${color5}${goto 12}| ${alignr}${font5}${color5}|
+# Space
+${font5}${color5}${goto 12}${color1}+--- ${font2}${color2}i3wm Functions ${alignr}${font5}${color5}|
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}restart i3 - ${alignr}${font4}${color4}super+shift+r ${alignr}${font5}${color5}|
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}quit i3 - ${alignr}${font4}${color4}super+q ${alignr}${font5}${color5}|
+${font5}${color5}${goto 12}|${goto 44}+-- ${font3}${color3}reload config file - ${alignr}${font4}${color4}super+shift+c ${alignr}${font5}${color5}|
+${font5}${color5}${goto 12}+-------------------------------------------${alignr}${font5}${color5}+
 
-${color2}application launcher [rofi] - ${alignr}${color}super+d
-${color2}screenshot - ${alignr}${color}print
-
-Workspaces & Container
-${color2}resize window - ${alignr}${color}super+r
-${color2}kill focused - ${alignr}${color}super+x
-${color2}toggle split direction - ${alignr}${color}super+shift+q
-${color2}toggle floating - ${alignr}${color}super+space
-${color2}toggle fullscreen - ${alignr}${color}super+f
-
-${color2}toggle WSs - ${alignr}${color}super+tab
-${color2}switch to WS 1-9 - ${alignr}${color}super+1-9
-${color2}send container to WS 1-9 - ${alignr}${color}super+ctrl+1-9
-${color2}move container sidewise - ${alignr}${color}super+ctrl+arrowkeys
-${color2}change focus - ${alignr}${color}super+arrowkeys
-
-i3wm Functions
-${color2}restart i3 - ${alignr}${color}super+shift+r
-${color2}quit i3 - ${alignr}${color}super+q
-${color2}reload config file - ${alignr}${color}super+shift+c
-#${color2}logout, reboot, shutdown ... - ${alignr}${color}super+0
 ]];
