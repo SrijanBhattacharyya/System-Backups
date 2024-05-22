@@ -12,13 +12,13 @@
 
 general {
 	output_format	= "i3bar"
-	colors		= true
-	color_good	= "#00ff00"
-	color_degraded	= "#ffff00"
-	color_bad	= "#ff0000"
-	color_separator	= "#ff00ff"
-	interval	= 1
-	separator	= "|"
+	colors			= true
+	color_good		= "#1AB9DA"
+	color_degraded	= "#daca1a"
+	color_bad		= "#da1a1a"
+	color_separator	= "#ab00ab"
+	interval		= 1
+	separator		= "|"
 }
 
 
@@ -33,7 +33,9 @@ order += "battery status"
 order += "battery charge"
 order += "battery t_remaining"
 order += "disk /"
-order += "volume master"
+# order += "volume master"
+order += "volume speaker"
+# order += "volume microphone"
 order += "load"
 #order += "memory"
 #order += "tztime format"
@@ -47,8 +49,8 @@ order += "tztime date"
 ################
 
 wireless _first_ {
-	format_up = "[] On: %essid (%quality)|IP: %ip"
-	format_down = "[!] Wifi: Not Connected"
+	format_up = "[🛜] On: %essid (%quality)|IP: %ip"
+	format_down = "[!🛜] Wifi: Not Connected|IP: No IP"
 }
 
 wireless status {
@@ -67,11 +69,11 @@ wireless ip {
 ###############
 
 battery status {
-	format = "[] %status"
+	format = "[🔋] %status"
 }
 
 battery charge {
-	format = "C: %percentage"
+	format = "[⚡] %percentage"
 }
 
 #battery time {
@@ -83,9 +85,8 @@ battery charge {
 #}
 
 battery t_remaining {
-	format = "T-Left: %remaining"
-	#format = "[    ] T-Left: %remaining"
-	format_down = "[  ] "
+	format = "[⏱️] %remaining"
+	format_down = "[🪫]"
 }
 
 
@@ -94,11 +95,11 @@ battery t_remaining {
 #######################
 
 disk "/" {
-	format = "[⛁] %avail"
+	format = "[💾] %avail"
 }
 
 load {
-	format = "%1min"
+	format = "[💿] %1min"
 }
 
 #memory {
@@ -112,16 +113,12 @@ load {
 ### Date and Time ###
 #####################
 
-tztime local {
-	format = "[⌚] %H:%M:%S |[] %a. %d.%m.%Y "
-}
-
 tztime time {
-	format = "[⌚] %I:%M:%S %p"
+	format = "[🕰️] %I:%M:%S %p"
 }
 
 tztime date {
-	format = "[] %a. %d/%m/%Y "
+	format = "[📆] %a. %d/%m/%Y "
 }
 
 
@@ -145,4 +142,20 @@ volume master {
 	device = "default"
 	mixer = "Master"
 	mixer_idx = 0
+}
+
+volume speaker {
+	format = "[🔈]: %volume"
+	format_muted = "[🔈]: muted (%volume)"
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 0
+}
+
+volume microphone {
+	format = "[🎤]: %volume"
+	format_muted = "[🎤]: muted (%volume)"
+	device = "default"
+	mixer = "Master"
+	mixer_idx = 1
 }
