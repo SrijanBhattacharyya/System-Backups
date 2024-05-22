@@ -4,81 +4,107 @@
 # Should you change your keyboard layout some time, delete
 # this file and re-run i3-config-wizard(1).
 #
-
 # i3 config file (v4)
-#
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 
-## setting some variables
-# default mod key
-set $super Mod4
+#########################
+### Default Variables ###
+#########################
+
+# Keys
+set $super								Mod4
+set $alt								Mod1
+
+# Status bar configs
+set $StatusBarHeight					22
+
+# Container configs
+set $GapDistanceInner					10
 
 # default wallpaper
-set $wppr /home/rohit/wallpapers/wp-8.png
-set $wppr_dim 1920x1080
-
-# default brightness
-set $brhtness   50
-set $bchange    5
+set $Wallpaper							/usr/share/wallpapers/archwave.png
+set $WallpaperDimentions				1920x1080
 
 # default volume
-set $vol        90
-set $vchange    5
+set $vol								80
+set $vchange							5
 
 # default IO devices
-set $speaker	0
-set $mic		1
+set $speaker							0
+set $mic								1
 
+# Applications
+set $TextEditor							/usr/bin/code
+set $TerminalEmulator					/usr/bin/alacritty
+set $RootTerminalEmulator				/usr/bin/alacritty -e sudo bash
+set $FileManager						/usr/bin/thunar
+set $WebBrowser							/usr/bin/google-chrome-stable --enable-features=WebUIDarkMode --force-dark-mode %U
 
-## default apps
-# browser
-set $browser	/usr/bin/google-chrome-stable --enable-features=WebUIDarkMode --force-dark-mode %U
-# terminal
-set $terminal	/usr/bin/alacritty
-# file manager
-set $fm 		/usr/bin/thunar
+# Programs
+set $ScreenCaptureTool					/usr/bin/flameshot
+set $ScreenRechordTool					/usr/bin/simplescreenrecorder
+set $ApplicationLauncher				/usr/bin/rofi -show drun -p menu
+set $ProgramLauncher					/usr/bin/dmenu_run
+set $AudioVisulizer						/usr/bin/glava --desktop
+set	$SystemLockScreen					~/.LockScreen
+set $ClearTmp							~/clrtmp.sh
+set $PowerMenuLauncher					/usr/bin/bash ~/.PowerMenu/PowerMenu
+set $WindowCompositor					/usr/bin/picom
+set $AutoSetup							/home/rohit/.config/system-setup.sh
+
+# Conky
+set $ConkySysstemInfo					~/.config/conky/conky-system.lua
+set $ConkyShortcuts						~/.config/conky/conky-shcts.lua
+set $ConkyCreator						~/.config/conky/conky-creator.lua
+set $ConkyNowPlaying					~/.config/conky/conky-now-playing.lua
 
 
 ###########################
 ### Autostart Programs: ###
 ###########################
 
-# exec --no-startup-id ~/.fehbg
+exec --no-startup-id /usr/bin/conky -c $ConkySysstemInfo
+exec --no-startup-id /usr/bin/conky -c $ConkyShortcuts
+exec --no-startup-id /usr/bin/conky -c $ConkyCreator
+exec --no-startup-id /usr/bin/conky -c $ConkyNowPlaying
+exec --no-startup-id $AudioVisulizer
+# exec --no-startup-id $ScreenRechordTool --start-hidden
 # exec --no-startup-id xsettingsd &
 # exec --no-startup-id pasystray
-exec --no-startup-id conky -c ~/.config/conky/conky.conf
-exec --no-startup-id conky -c ~/.config/conky/conky-shcts
-# exec --no-startup-id copyq
+exec --no-startup-id /usr/bin/copyq
 # exec --no-startup-id dunst
 # exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 # exec --no-startup-id desktop-items
-# exec --no-startup-id nm-applet
 # exec --no-startup-id pamac-tray
 # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # exec --no-startup-id xfce4-power-manager
-# exec blueberry-tray
+# exec --no-startup-id blueberry-tray
 # exec --no-startup-id java -Xmx1024m -jar "/opt/xdman/xdman.jar" -m
-# exec --no-startup-id ~/.local/bin/fastfetch-garuda
+exec --no-startup-id /usr/bin/i3-battery-popup -n -D -L 20 -l 10
+exec --no-startup-id /usr/bin/nm-applet
+exec --no-startup-id /usr/bin/dex --autostart --environment i3
+exec --no-startup-id /usr/bin/xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id /usr/bin/pamixer --set-volume $vol
+exec $WindowCompositor
+exec $AutoSetup
 
-exec_always --no-startup-id convert $wppr -resize $wppr_dim^ -gravity center -extent $wppr_dim $wppr
-exec_always --no-startup-id element-desktop --hidden
+exec_always --no-startup-id /usr/bin/convert $Wallpaper -resize $WallpaperDimentions^ -gravity center -extent $WallpaperDimentions $Wallpaper
+exec_always --no-startup-id /usr/bin/feh --bg-fill $Wallpaper
+# exec_always --no-startup-id element-desktop --hidden
 # exec_always --no-startup-id ff-theme-util
 # exec_always --no-startup-id setcursor
 # exec_always --no-startup-id ${HOME}/.config/polybar/launch.sh
-# exec_always --no-startup-id numlockx on
+exec_always --no-startup-id /usr/bin/numlockx on
+exec_always --no-startup-id $ScreenCaptureTool
+exec_always --no-startup-id /usr/bin/pamixer --set-volume $vol
 
 
-## tiling config
+# Font for window titles. Will also be used by the bar unless a different font
 # gaps
-gaps inner 10
+gaps inner $GapDistanceInner
 
-
-## connect charger notification
-exec --no-startup-id i3-battery-popup -n -D -L 20 -l 10
-
-
-# Font for window titles. Will also be used by the bar unless a different font is used in the bar {} block below.
+# is used in the bar {} block below.
 font pango:monospace 9
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
@@ -87,129 +113,94 @@ font pango:monospace 9
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
-exec --no-startup-id dex --autostart --environment i3
+#exec --no-startup-id dex --autostart --environment i3
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+#exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
-
+#exec --no-startup-id nm-applet
 
 ## audio control settings
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
 
-bindsym		XF86AudioRaiseVolume	exec    --no-startup-id	pactl   set-sink-volume $speaker	+$vchange%  &&  $refresh_i3status
-bindsym		XF86AudioLowerVolume	exec    --no-startup-id	pactl   set-sink-volume $speaker	-$vchange%  &&  $refresh_i3status
+bindsym		XF86AudioRaiseVolume	exec	--no-startup-id	pactl	set-sink-volume	$speaker	+$vchange%	&&	$refresh_i3status
+bindsym		XF86AudioLowerVolume	exec	--no-startup-id	pactl	set-sink-volume	$speaker	-$vchange%	&&	$refresh_i3status
 
-bindsym		XF86AudioMute           exec    --no-startup-id	pactl   set-sink-mute   $speaker	toggle      &&  $refresh_i3status
-bindsym		XF86AudioMicMute        exec    --no-startup-id	pactl   set-source-mute $mic		toggle      &&  $refresh_i3status
-
+bindsym		XF86AudioMute			exec	--no-startup-id	pactl	set-sink-mute	$speaker	toggle		&&	$refresh_i3status
+bindsym		XF86AudioMicMute		exec	--no-startup-id	pactl	set-source-mute	$mic		toggle		&&	$refresh_i3status
 
 # Use Mouse+$super to drag floating windows to their wanted position
 floating_modifier $super
 
 # move tiling windows via drag & drop by left-clicking into the title bar,
 # or left-clicking anywhere into the window while holding the floating modifier.
-#tiling_drag modifier titlebar
+# tiling_drag modifier titlebar
 
 # kill focused window
 bindsym $super+x kill
 
-# A more modern dmenu replacement is rofi: bindcode $super+40 exec "rofi -modi drun,run -show drun" 
-# There also is i3-dmenu-desktop which only displays applications shipping a .desktop file. It is 
-# a wrapper around dmenu, so you need that installed. bindcode $super+40 exec --no-startup-id 
-# i3-dmenu-desktop
+# change focus
+# bindsym $super+j focus left
+# bindsym $super+k focus down
+# bindsym $super+l focus up
+# bindsym $super+semicolon focus right
 
+# alternatively, you can use the cursor keys:
+bindsym $super+Left focus left
+bindsym $super+Down focus down
+bindsym $super+Up focus up
+bindsym $super+Right focus right
 
-## change focus
-# with keyboard
-bindsym $super+Left 	focus left
-bindsym $super+Right 	focus right
-bindsym $super+Up 		focus up
-bindsym $super+Down 	focus down
+# move focused window
+bindsym $super+ctrl+Left move left
+bindsym $super+ctrl+Down move down
+bindsym $super+ctrl+Up move up
+bindsym $super+ctrl+Right move right
 
-# with mouse
-focus_follows_mouse yes
-
-# focus toggle
-bindsym Alt+Tab     focus toggle
-
-## move focused window
-bindsym $super+Ctrl+Left 	    move left
-bindsym $super+Ctrl+Right 		move right
-bindsym $super+Ctrl+Up 			move up
-bindsym $super+Ctrl+Down 	    move down
-
-
-## split desktop
 # split in horizontal orientation
 bindsym $super+h split v
 
 # split in vertical orientation
 bindsym $super+v split h
 
-# change container layout (stacked, tabbed, toggle split)
-#bindsym $super+s layout stacking
-#bindsym $super+w layout tabbed
-#bindsym $super+e layout toggle split
-
-# toggle tiling / floating
-#bindsym $super+Shift+space focus_toggle
-
 # enter fullscreen mode for the focused container
 bindsym $super+f fullscreen toggle
 
-# change focus between tiling / floating windows
+# change container layout (stacked, tabbed, toggle split)
+bindsym $super+s layout stacking
+bindsym $super+w layout tabbed
+bindsym $super+e layout toggle split
+
+# toggle tiling / floating
 bindsym $super+space floating toggle
 
-# change focus with Alt+Tab
-#bindsym Alt+Tab focus change
+# change focus between tiling / floating windows
+bindsym $super+Shift+space focus mode_toggle
 
 # focus the parent container
-#bindsym $super+a focus parent
+bindsym $super+a focus parent
 
 # focus the child container
 #bindsym $super+d focus child
 
-
-## enableing some services
-# bluetooth
-#exec_always bluetoothctl
-
-# battery monitor
-#exec_always python3 '/home/rohit/bat_monitor.py'
-
-
-## adding some functionals
-# lock screen
-bindsym $super+l exec i3lock --image $wppr -e
-
-# setting the default volume
-exec_always pamixer --set-volume $vol
-
-
-## workspace behaviour
-# wallpaper
-exec_always feh --bg-fill $wppr
-
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1	"1: "
-set $ws2	"2: "
-set $ws3	"3:  "
-set $ws4	"4: Blender"
-set $ws5	"5: 🪞"
-set $ws6	"6: ♫/🎥 ✂️"
-set $ws7	"7: Undefined"
-set $ws8	"8: Undefined"
-set $ws9	"9: 🧅"
+set		$ws1			"1: >_"
+set		$ws2			"2: 🌐"
+set		$ws3			"3:  "
+set		$ws4			"4: 🪞"
+set		$ws5			"5: PDF"
+set		$ws6			"6: Undefined"
+set		$ws7			"7: Undefined"
+set		$ws8			"8: Undefined"
+set		$ws9			"9: 🧅"
 
 ## switch to workspace
 # by keyboard num keys
@@ -226,7 +217,6 @@ bindsym $super+9			workspace number $ws9
 # switch workspace back and forth
 bindsym $super+Tab		workspace back_and_forth
 
-
 ## move focused container to workspace
 bindsym $super+Ctrl+1 move container to workspace number $ws1
 bindsym $super+Ctrl+2 move container to workspace number $ws2
@@ -238,85 +228,165 @@ bindsym $super+Ctrl+7 move container to workspace number $ws7
 bindsym $super+Ctrl+8 move container to workspace number $ws8
 bindsym $super+Ctrl+9 move container to workspace number $ws9
 
-
-## Brightness Settings
-# setting up default display brightness at 50%
-exec_always	xbacklight -set $brhtness
-
-# increase brightness
-bindsym		Mod2+XF86MonBrightnessUp	exec	xbacklight	-inc	$bchange
-
-# decrese brightness
-bindsym		Mod2+XF86MonBrightnessDown	exec	xbacklight	-dec	$bchange
-
-# switch display off if the lid is down
-#exec_always xbacklight -set 0
+# reload the configuration file
+bindsym $super+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $super+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $super+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 
-## assign programs to workspace
-# for terminal
-for_window		[class="Alacritty"]                 move to workspace $ws1
-
-# for Chrome
-for_window		[class="Google-chrome"]             move to workspace $ws2
-
-# for VSCode and associats
-for_window		[class="Code"]                      move to workspace $ws3
-for_window      [class="Tk"]                      	move to workspace $ws3
-
-# for Arduino-ide
-for_window		[class="processing-app-Base"]       move to workspace $ws3
-
-# for Blender
-for_window		[class="Blender"]                   move to workspace $ws4
-
-# for scrcpy
-for_window		[class="scrcpy"]                    move to workspace $ws5
-
-# for raspi-imager
-for_window		[class="Imager"]                    move to workspace $ws3
-
-# for Audacity
-for_window		[class="Audacity"]                  move to workspace $ws6
-
-# for OpenShot
-for_window      [class="openshot"]                  move to workspace $ws6
-
-# for tor browser
-for_window		[class="Tor Browser"]               move to workspace $ws9
-
-
-## enabling floating window and title bar for certain window
-# example command
-#for_window	[class="WM_CLASS"]              floating enable,    border size,        #move_to_position
+#################################
+### Applications -> Workspace ###
+#################################
 # screen dimention = 1920x1080
 
-# for Tk windows
-for_window	[class="Tk"]                    floating enable,    border normal,      move position center
+#for_window		[class="WM_CLASS"]					move to workspace $wsNO				floating ON/OFF,	border <size>,		-g <geometry>/move position <pos>
+for_window		[class="Alacritty"]					move to workspace $ws1
+for_window		[class="URxvt"]						move to workspace $ws1
+for_window		[class="Google-chrome"]				move to workspace $ws2
+for_window		[class="Code"]						move to workspace $ws3
+for_window		[class="scrcpy"]					move to workspace $ws4,				floating enable,	border pixel 1,		move position center
+for_window		[class="okular"]					move to workspace $ws5
+for_window		[class="vlc"]						move to workspace $ws9
+for_window		[class="Thunar"]														floating enable,	border pixel 1,		-g 773x474+374+131
+for_window		[class="qBittorrent"]				move to workspace $ws9				floating enable,	border pixel 1,		move position center
+for_window		[class="SimpleScreenRecorder"]											floating enable,	border pixel 1,		move position center
+for_window		[class="Tor Browser"]				move to workspace $ws9
 
-# for vlc
-for_window  [class="vlc"]                                       border normal,		-g 420x180+1080+720
 
-# for Screen Recorder
-for_window	[class="SimpleScreenRecorder"], floating enable,    border normal
+# resize window (you can also use the mouse for that)
+mode "resize" {
+		# These bindings trigger as soon as you enter the resize mode
 
-# for scrcpy
-for_window	[class="scrcpy"]                floating enable,	border pixel 1,		move position center
+		# Pressing left will shrink the window’s width.
+		# Pressing right will grow the window’s width.
+		# Pressing up will shrink the window’s height.
+		# Pressing down will grow the window’s height.
+		bindsym j resize shrink width 10 px or 10 ppt
+		bindsym k resize grow height 10 px or 10 ppt
+		bindsym l resize shrink height 10 px or 10 ppt
+		bindsym semicolon resize grow width 10 px or 10 ppt
 
-# for raspi-imager
-for_window	[class="Imager"]                floating enable,	border normal,		move position center
+		# same bindings, but for the arrow keys
+		bindsym Left resize shrink width 10 px or 10 ppt
+		bindsym Down resize grow height 10 px or 10 ppt
+		bindsym Up resize shrink height 10 px or 10 ppt
+		bindsym Right resize grow width 10 px or 10 ppt
 
-# for thunar
-for_window	[class="Thunar"]                floating enable,	border pixel 1,		-g 773x474+374+131
+		# back to normal: Enter or Escape or $super+r
+		bindsym Return mode "default"
+		bindsym Escape mode "default"
+		bindsym $super+r mode "default"
+}
 
-# for Audacity
-for_window	[class="Audacity"]                                  border normal
+bindsym $super+r mode "resize"
 
-# for Kde Connect
-for_window	[class="kdeconnect.app"]        floating enable,    border normal,		move position center
 
-# for feh
-for_window	[class="feh"]                                       border normal
+# colors
+set $BorderColor						#1AB9DA
+set $InactiveBorderColor				#ffffff
+set $UrgentBorderColor					#da1a1a
+
+set $StatusBarSeperatorColor			#ffffff
+set $StatusBarBackgroundColor			#363636e6
+set $StatusBarTextColor					#ffffff
+
+# class				 	border					Background						text				indicator
+client.focused			$BorderColor			$StatusBarBackgroundColor		$StatusBarTextColor	$StatusBarBackgroundColor
+client.unfocused		$InactiveBorderColor	$StatusBarBackgroundColor		$StatusBarTextColor	$StatusBarBackgroundColor
+client.focused_inactive $InactiveBorderColor	$StatusBarBackgroundColor		$StatusBarTextColor	$StatusBarBackgroundColor
+client.urgent			$UrgentBorderColor		$StatusBarBackgroundColor		$StatusBarTextColor	$StatusBarBackgroundColor
+
+
+###################
+### Status Bars ###
+###################
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+# SHOWS ONLY SYSTEM INFO
+bar {
+	# Top Bar
+	id statusbar
+	position top
+	status_command i3status -c ~/.config/i3status/config
+	font pango:monospace 10
+	height $StatusBarHeight
+
+	# hide tray
+	tray_output none
+
+	# color settings
+	colors {
+		background		$StatusBarBackgroundColor
+		# separator		$StatusBarSeperatorColor
+		# statusline		$StatusBarTextColor
+	}
+
+	# hide workspaces
+	workspace_buttons no
+
+	# gap setttings
+	# padding auto
+}
+
+
+# SHOWS ONLY WORKSPACES
+bar {
+	# Bottom Bar
+	id workspacesbar
+	position bottom
+	status_command i3status -c ~/.config/i3workspaces/config
+	height $StatusBarHeight
+	font xft:Hack Nerd Font, FontAwesome 10
+
+	workspace_min_width 10
+
+	# tray
+	tray_padding 5
+
+	# color settings
+	colors {
+		background		$StatusBarBackgroundColor
+		separator		$StatusBarSeperatorColor
+		# statusline		$StatusBarTextColor
+
+		# class				 	border					Background					text
+		focused_workspace		$BorderColor			$StatusBarBackgroundColor	$StatusBarTextColor
+		inactive_workspace		$InactiveBorderColor	$StatusBarBackgroundColor	$StatusBarTextColor
+		urgent_workspace		$UrgentBorderColor		$StatusBarBackgroundColor	$StatusBarTextColor
+		}
+
+	# gap setttings
+	#padding	top[px]	right[px]	bottom[px]	left[px]
+	padding		0		0			0			0
+}
+
+
+###################
+### Keybindings ###
+###################
+
+# Apps
+bindsym		$super+t			exec	$TerminalEmulator
+bindsym		$super+Shift+t		exec	$$RootTerminalEmulator
+bindsym		$super+b			exec	$WebBrowser
+bindsym		$super+c			exec	$TextEditor
+bindsym		$super+m			exec	$FileManager
+
+# Programs
+bindsym		Print				exec	--no-startup-id $ScreenCaptureTool gui
+bindsym		Shift+Print			exec	--no-startup-id	$ScreenRechordTool
+bindsym		$super+d			exec	--no-startup-id $ApplicationLauncher
+bindsym		$super+Shift+d		exec	--no-startup-id $ProgramLauncher
+bindsym		$super+l			exec	--no-startup-id $SystemLockScreen
+bindsym		$super+q			exec	$PowerMenuLauncher
+
+# Multimedia Control
+bindsym		XF86AudioPlay		exec	playerctl -p chromium play-pause
+bindsym		XF86AudioNext		exec	playerctl -p chromium next
+bindsym		XF86AudioPrev		exec	playerctl -p chromium previous
 
 
 ## Hiding title bar
@@ -326,219 +396,5 @@ default_border			pixel	1
 # for floating window
 default_floating_border	pixel	1
 
-
 ## setting the title to be at the center
 title_align center
-
-
-## i3 funcs
-# reload the configuration file
-bindsym $super+Shift+c reload
-
-
-## i3
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $super+Shift+r restart
-
-# exit i3 (logs you out of your X session)
-bindsym $super+q exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
-
-## resize window
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # same bindings for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $super+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $super+r mode "default"
-}
-
-bindsym $super+r mode "resize"
-
-
-## setting up colors
-# col ver
-set $bdr                #00ff00
-set $ibdr               #ffffff
-set $ubdr               #ff0000
-set $bg                 #282828e6
-set $ibg                #282828e6
-set $ubg                #282828e6
-set $txtcol             #ffffff
-set $status_sep         #00897b
-set $status_bg_top      #363636e6
-set $status_bg_bottom   #363636e6
-
-# class                 border  backgr. text    indicator
-client.focused          $bdr    $bg     $txtcol $bg
-client.unfocused        $ibdr   $ibg    $txtcol $ibg
-client.focused_inactive $ibdr   $ibg    $txtcol $ibg
-client.urgent           $ubdr   $ubg    $txtcol $ubg
-
-
-## status bar
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-# SHOWS ONLY SYSTEM INFO
-bar {
-	# Top Bar
-	id bar-1
-	position top
-	status_command i3status -c ~/.config/i3status/i3status.conf
-	font pango:monospace 10
-
-	# hide tray
-	tray_output none
-
-	# color settings
-	colors {
-		background	$status_bg_top
-		separator	$status_sep
-	}
-
-	# hide workspaces
-	workspace_buttons no
-
-	#align center
-	#padding auto
-}
-
-
-# SHOWS ONLY WORKSPACES
-bar {
-	# Bottom Bar
-	id bar-2
-	position bottom
-	status_command i3status -c ~/.config/i3status/i3workspaces.conf
-	workspace_min_width 10
-
-	# font
-	#font pango:monospace 9
-	font xft:Hack Nerd Font, FontAwesome 10
-
-	# tray
-	tray_padding 5
-
-	# color settings
-        colors {
-                background      $status_bg_bottom
-                separator       $status_sep
-
-                # class                 border  backgr. text
-                focused_workspace       $bdr    $bg     $txtcol
-                inactive_workspace      $ibdr   $ibg    $txtcol
-                urgent_workspace        $ubdr   $ubg    $txtcol
-        }
-
-        # gap setttings
-        #padding        top[px] right[px]       bottom[px]      left[px]
-        padding         0       5               0               5
-}
-
-
-####################################################
-### Set shut down, restart and locking features: ###
-####################################################
-
-bindsym $super+0 mode "$mode_system"
-#set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown0
-set $mode_system (l)ock, (Shift+s)hutdown0, (r)eboot, (e)xit
-
-mode "$mode_system" {
-	bindsym l exec --no-startup-id i3exit lock, mode "default"
-	bindsym s exec --no-startup-id i3exit suspend, mode "default"
-#	bindsym u exec --no-startup-id i3exit switch_user, mode "default"
-#	bindsym e exec --no-startup-id i3exit logout, mode "default"
-#	bindsym h exec --no-startup-id i3exit hibernate, mode "default"
-	bindsym r exec --no-startup-id i3exit reboot, mode "default"
-	bindsym Shift+s exec --no-startup-id i3exit shutdown, mode "default"
-
-	# exit system mode: "Enter" or "Escape"
-	bindsym Return mode "default"
-	bindsym Escape mode "default"
-}
-
-
-## apps and shortcut key combinations
-# example command
-#bindsym	key-combination	exec	command
-
-# start dmenu (a program launcher)
-bindsym     $super+Shift+d         exec    --no-startup-id dmenu_run
-
-# start rofi (an app launcher)
-bindsym		$super+d    exec	/usr/bin/rofi -show drun
-
-# start chrome
-bindsym		$super+b          exec	$browser
-
-# start a terminal
-bindsym		$super+t          exec	$terminal
-
-# start VSCode
-bindsym		$super+c          exec	/usr/bin/code
-
-# start Blender
-bindsym		$super+Shift+b    exec	/usr/bin/blender
-
-# start audacity
-bindsym     $super+a          exec  /usr/bin/audacity
-
-# start scrcpy
-bindsym		$super+Shift+a    exec	/usr/bin/scrcpy
-
-# start raspi-imager
-bindsym		$super+i          exec	/usr/bin/rpi-imager
-
-# start thunar
-bindsym		$super+Shift+t    exec	$fm
-
-# start screen recorder
-#bindsym     $super+Alt+r      exec    ~/ssr.sh
-
-# player
-# play-pause
-bindsym		XF86AudioPlay	exec	playerctl -p chromium play-pause
-
-# play next
-bindsym		XF86AudioNext	exec	playerctl -p chromium next
-
-# play previous
-bindsym     XF86AudioPrev	exec	playerctl -p chromium previous
-
-# screenshot
-bindsym     Print               exec flameshot gui
-
-# screen recorder
-#bindsym    $super+Shift+Print    exec simplescreenrecorder
-
-
-## execute at the start
-# win compositor
-exec_always	picom --config ~/.config/picom/picom.conf
-
-# node-red server
-#exec_always node-red
-
-# screenshot
-exec_always flameshot
-
-# screen recorder
-#exec_always simplescreenrecorder --start-hidden
-
-# bluetooth
-#exec_always bluetoothctl
-
-# battery monitor
-#exec_always python3 '/home/rohit/bat_monitor.py'
-
-# network manager applet
-exec_always nm-applet
