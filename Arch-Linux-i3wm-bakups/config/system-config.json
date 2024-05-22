@@ -1,0 +1,19 @@
+{
+    "SystemDetails": {},
+    "SystemSettings": {
+        "DevMood": false,
+        "Numlock": "on",
+        "Wallpaper": "/usr/share/wallpapers/archwave.png"
+    },
+    "sddmSettings": {
+        "Current": "sugar-candy",
+        "ThemeSettings": {
+            "Background": "/usr/share/wallpapers/sddm-wppr.png",
+            "HeaderText": "Welcome !",
+            "background": "/usr/share/wallpapers/sddm-wppr.png"
+        }
+    },
+    "GrubSettings": {
+        "Theme": ""
+    }
+}

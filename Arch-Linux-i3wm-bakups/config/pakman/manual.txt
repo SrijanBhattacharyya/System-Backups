@@ -1,0 +1,12 @@
+Usage:
+    pan
+    pan <operation> [...]
+    pan <package(s)>
+
+Options:
+    -r=TEXT-FILE                Reads the text file
+    -e=TEXT-FILE                Exclude the following packages stored in a file
+    -u                          Removes unrequired packages and updates the rest, also updates the ~/.
+    -rm, --remove               Remove packages
+    -h, --help                  Shows the manual page
+    -v, --version               output version information and exit

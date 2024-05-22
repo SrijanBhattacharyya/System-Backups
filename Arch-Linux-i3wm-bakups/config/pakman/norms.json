@@ -1,0 +1,11 @@
+{
+    "installed-pkgs-path": "/home/rohit/.installed-pkgs.json",
+    "sudoer": false,
+    "package-maneger": "yay",
+    "install-argument": "-Syy",
+    "get-package-argument": "-Q",
+    "unrequird-package-argument": "-Qtdq",
+    "remove-argument": "-Rns",
+    "update-argument": "-Syyu",
+    "exclude": []
+}

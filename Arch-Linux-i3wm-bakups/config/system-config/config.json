@@ -1,0 +1,171 @@
+// # => /home/rohit/.config
+// @ -> mentions
+
+{
+    // "path-to-config-file": {"config"},
+    "SystemDetails": {
+        "OS": "Arch Linux x86_64",
+        "Resolution": "1920x1080",
+        "User": [
+            "root",
+            "rohit"
+        ],
+        "PackageManager": [
+            "yay",
+            "pacman"
+        ],
+        "InstallatonCommand": [
+            "yay -Sy",
+            "pacman -Sy"
+        ]
+    },
+    "wallpapers": {
+        "DesktopWallpaper": "/usr/share/wallpapers/archwave.png",
+        "LockscreenWallpaper": "/usr/share/wallpapers/archwave.png",
+        "sddmWallpaper": "/usr/share/wallpapers/sddm-wppr.png"
+    },
+    "SystemSettings": {
+        "Numlock": "on"
+    },
+    "sddm": {
+        "sddmConfigFile": "/etc/sddm.conf",
+        "sddmThemeDir": "/usr/share/sddm/themes/",
+        "sddmThemeConfigFile": "theme.conf",
+        "sddmTheme": "sugar-candy",
+        "AccentColor": "#1AB9DA",
+        "BackgroundColor": "#000000",
+        "OverrideLoginButtonTextColor": "#000000",
+        "HourFormat": "hh:mm:ss ap",
+        "DateFormat": "ddd, dd-MM-yyyy",
+        "HeaderText": "Welcome to the friendly place!",
+        "ForceHideCompletePassword": "true",
+        "ForceHideVirtualKeyboardButton": "true"
+    },
+    "systemConfigFiles": {
+        "InstalledPkgsFile": "/home/@SystemDetails.User.1/.installed-pkgs.json"
+    },
+    "conkyConfigFiles": {
+        "ConkySystemInfo": "/home/@SystemDetails.User.1/.config/conky/conky-system",
+        "ConkyShortcuts": "/home/@SystemDetails.User.1/.config/conky/conky-shcts",
+        "ConkyCreator": "/home/@SystemDetails.User.1/.config/conky/conky-creator",
+        "ConkyNowPlaying": "/home/@SystemDetails.User.1/.config/conky/conky-now-playing"
+    },
+    "#/i3wm/config": {
+        "autostart": {
+            "exec": {
+                "ConkySystemInfo": "/usr/bin/conky -c @conkyConfigFiles.ConkySystemInfo",
+                "ConkyShortcuts": "/usr/bin/conky -c @conkyConfigFiles.ConkyShortcuts",
+                "ConkyCreator": "/usr/bin/conky -c @conkyConfigFiles.ConkyCreator",
+                "ConkyNowPlaying": "/usr/bin/conky -c @conkyConfigFiles.ConkyNowPlaying",
+                "AudioVisulizer": "/usr/bin/glava --desktop",
+                "Clipboard": "/usr/bin/copyq",
+                "BatteryManeger": "/usr/bin/i3-battery-popup -n -D -L 20 -l 10",
+                // "BluetoothManager": "/usr/bin/blueberry-tray",
+                "NetworkManager": "/usr/bin/nm-applet"
+            },
+            "exec_always": {
+                "ImageConverter": "/usr/bin/convert @wallpapers.DesktopWallpaper -resize @WallpaperDimentions^ -gravity center -extent @WallpaperDimentions @wallpapers.DesktopWallpaper",
+                "WallpaperManager": "/usr/bin/feh --bg-fill $Wallpaper",
+                "NumPadManager": "/usr/bin/numlockx @SystemSettings.Numlock",
+                "ScreenCaptureTool": "/usr/bin/flameshot"
+            }
+        }
+    },
+    "manstart": {
+        "applications": {
+            "TextEditor": {
+                "path": "/usr/bin/code",
+                "keysym": "$super+c"
+            },
+            "TerminalEmulator": {
+                "path": "/usr/bin/alacritty --config-file /home/@SystemDetails.User.1/.config/alacritty/alacritty.yml",
+                "keysym": "$super+t"
+            },
+            "FileManager": {
+                "path": "/usr/bin/thunar",
+                "keysym": "$super+Shift+t"
+            },
+            "WebBrowser": {
+                "path": "/usr/bin/google-chrome-stable --enable-features=WebUIDarkMode --force-dark-mode %U",
+                "keysym": "$super+b"
+            }
+        },
+        "programs": {
+            "ScreenCaptureTool": {
+                "path": "/usr/bin/flameshot gui",
+                "keysim": "Print"
+            },
+            "ApplicationLauncher": {
+                "path": "/usr/bin/rofi -show drun",
+                "keysim": "$super+d"
+            },
+            "ProgramLauncher": {
+                "path": "/usr/bin/dmenu_run",
+                "keysim": "$super+shift+d"
+            }
+        }
+    },
+    "conky": {
+        "for-all": {
+            "background": true,
+            "update_interval": 1.0,
+            "cpu_avg_samples": 2,
+            "net_avg_samples": 2,
+            "temperature_unit": "celsius",
+            "if_up_strictness": "address",
+            "double_buffer": true,
+            "no_buffers": true,
+            "text_buffer_size": 2048,
+            "own_window": true,
+            "own_window_class": "conky",
+            "own_window_type": "override",
+            "own_window_hints": "undecorated,sticky,skip_taskbar,skip_pager,below",
+            "own_window_transparent": true,
+            "own_window_argb_value": 0,
+            "draw_shades": false,
+            "draw_outline": false,
+            "draw_borders": false,
+            "draw_graph_borders": false,
+            "border_inner_margin": 0,
+            "border_outer_margin": 9,
+            "override_utf8_locale": true,
+            "use_xft": true,
+            "xftalpha": 0.8,
+            "uppercase": false,
+            "alignment": "tl",
+            "gap": 40
+        },
+        "conky-system": {
+            "minimum_width": 400,
+            "minimum_height": 941,
+            "gap_x": 40,
+            "gap_y": 62
+        },
+        "conky-now-playing": {
+            "minimum_width": 900,
+            // "minimum_height": 741,
+            "gap_x": 510,
+            "gap_y": 62
+        },
+        "conky-shcts": {
+            "minimum_width": 400,
+            "minimum_height": 741,
+            "gap_x": 1480,
+            "gap_y": 62
+        },
+        "conky-creator": {
+            "minimum_width": 400,
+            "minimum_height": 741,
+            "gap_x": 510,
+            "gap_y": 70
+        }
+    },
+    "bars": {
+        "i3status": {
+            "height": 22
+        },
+        "i3workspaces": {
+            "height": 22
+        }
+    }
+}
