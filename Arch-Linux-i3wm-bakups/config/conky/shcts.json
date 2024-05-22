@@ -1,0 +1,22 @@
+{
+    "terminal": "super+t",
+    "browser": "super+b",
+    "code_space": "super+c",
+    "filemanager": "super+m",
+    "power_menu": "super+q",
+    "scrcpy": "super+a",
+    "rpi_imager": "super+i",
+    "app_menu": "super+d",
+    "screenshot": "print",
+    "resize_window": "super+r",
+    "kill_focused": "super+x",
+    "toggle_floating": "super+space",
+    "toggle_fullscreen": "super+f",
+    "toggle_ws": "super+tab",
+    "switch_to": "super+1_9",
+    "send_to": "super+ctrl+1_9",
+    "move_to": "super+ctrl+arrowkeys",
+    "focus_to": "super+arrowkeys",
+    "restart_i3": "super+shift+r",
+    "reload_i3": "super+shift+c"
+}
